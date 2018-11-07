@@ -65,12 +65,12 @@
 				0AC1DD1121898C2A00483692 /* GameScene.sks */,
 				0AC1DD1521898C2A00483692 /* GameScene.swift */,
 				0A0E448D218DE3130057B565 /* Figure.swift */,
+				0A8921DD21926FFB008132C4 /* ColorConverter.swift */,
 				0AC1DD1721898C2A00483692 /* ViewController.swift */,
 				0AC1DD1921898C2A00483692 /* Assets.xcassets */,
 				0AC1DD1B21898C2A00483692 /* Main.storyboard */,
 				0AC1DD1E21898C2A00483692 /* Info.plist */,
 				0AC1DD1F21898C2A00483692 /* Lissajous_table.entitlements */,
-				0A8921DD21926FFB008132C4 /* ColorConverter.swift */,
 			);
 			path = "Lissajous table";
 			sourceTree = "<group>";
