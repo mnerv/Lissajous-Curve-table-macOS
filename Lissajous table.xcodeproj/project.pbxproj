@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		0A0E448D218DE3130057B565 /* Figure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		0A8921DD21926FFB008132C4 /* ColorConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
-		0AC1DD0C21898C2A00483692 /* Lissajous table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lissajous table.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A8B70072193A25600F4B9FF /* Lissajous table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lissajous table.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC1DD0F21898C2A00483692 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC1DD1121898C2A00483692 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		0AC1DD1521898C2A00483692 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -46,16 +46,8 @@
 			isa = PBXGroup;
 			children = (
 				0AC1DD0E21898C2A00483692 /* Lissajous table */,
-				0AC1DD0D21898C2A00483692 /* Products */,
+				0A8B70072193A25600F4B9FF /* Lissajous table.app */,
 			);
-			sourceTree = "<group>";
-		};
-		0AC1DD0D21898C2A00483692 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0AC1DD0C21898C2A00483692 /* Lissajous table.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		0AC1DD0E21898C2A00483692 /* Lissajous table */ = {
@@ -92,7 +84,7 @@
 			);
 			name = "Lissajous table";
 			productName = "Lissajous table";
-			productReference = 0AC1DD0C21898C2A00483692 /* Lissajous table.app */;
+			productReference = 0A8B70072193A25600F4B9FF /* Lissajous table.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +111,7 @@
 				Base,
 			);
 			mainGroup = 0AC1DD0321898C2A00483692;
-			productRefGroup = 0AC1DD0D21898C2A00483692 /* Products */;
+			productRefGroup = 0AC1DD0321898C2A00483692;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

@@ -12,14 +12,15 @@ import GameplayKit
 class GameScene: SKScene {
     
     //MARK: Global Variables
-    var test = [[String]]()
     var sceneSize = CGSize(width: 0, height: 0)
     var radius: Double = 0
     var circles = [[Curve]]()
     
-    var columnCount: Int = 10
+    var columnCount: Int = 8
     var rowCount: Int = 0
-    var circleRadiusRatio = 0.9
+    var circleRadiusRatio = 0.82
+    
+    var counter: Int = 0
     
     //MARK: Start Function
     override func didMove(to view: SKView) {
@@ -46,21 +47,16 @@ class GameScene: SKScene {
             for shape in cir{
                 shape.createCircle()
                 self.addChild(shape.getShape())
+                self.addChild(shape.getDotShape())
             }
         }
         
-        for i in 0..<3{
-            test.append(["x" + String(i), "y" + String(i)])
-        }
-        test.append(["x"])
     }
     
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
         case 49:
-            for i in test{
-                print(i)
-            }
+            print("Hello World")
         default:
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
         }
@@ -68,6 +64,26 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        for _ in 0..<1{
+            for cir in self.circles{
+                for shape in cir{
+                    shape.advanceTraceDot(counter: counter)
+                }
+            }
+            counter += 1
+            if(counter > 360){
+                counter = 0
+                break
+            }
+        }
+        
+        self.removeAllChildren()
+        for cir in self.circles{
+            for shape in cir{
+                self.addChild(shape.getShape())
+                self.addChild(shape.getDotShape())
+            }
+        }
     }
     
 }
