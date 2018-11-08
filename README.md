@@ -1,4 +1,4 @@
-# Lissajous table macOS
+# Lissajous Curve table macOS
 Drawing Lissajous table in Swift using SpriteKit
 
 # Animation
