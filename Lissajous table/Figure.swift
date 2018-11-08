@@ -105,8 +105,26 @@ class Curve {
     }
     
     func appendPointsArray(location: CGPoint) {
-        self.pointsArr.append(location)
+        if self.pointsArr.isEmpty{
+            self.pointsArr.append(location)
+        } else {
+            if !checkIfDuplicate(location: location){
+                self.pointsArr.append(location)
+            }
+        }
         setTraceDotLocation(location: location)
+    }
+    
+    func checkIfDuplicate(location: CGPoint) -> Bool {
+        var temp = false
+        for x in self.pointsArr{
+            if location == x{
+                temp = true
+            } else {
+                temp = false
+            }
+        }
+        return temp
     }
     
     func getDotShape() -> SKShapeNode {
