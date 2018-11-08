@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Curve {
+class Rings {
     //MARK: Private Variables
     private let radius: CGFloat
     private var locationOrigin: CGPoint
@@ -20,7 +20,6 @@ class Curve {
     private var dotLocation: CGPoint?
     
     //MARK: Public Varables
-    var pointsArr = [CGPoint]()
     var showTraceDot: Bool = true
     var traceDotRadius: Double = 5
     
@@ -36,16 +35,6 @@ class Curve {
         self.shape?.position = self.locationOrigin
         self.shape?.strokeColor = NSColor(cgColor: self.circleColor)!
         createTraceDot(radius: traceDotRadius)
-    }
-    
-    func appendPointsArray(location: CGPoint) {
-        self.pointsArr.append(location)
-        setTraceDotLocation(location: location)
-        
-    }
-    
-    func resetPointsArray() -> Void {
-        self.pointsArr = []
     }
     
     func createTraceDot(radius: Double) {
@@ -78,4 +67,35 @@ class Curve {
         return self.locationOrigin
     }
     
+}
+
+class Curve {
+    private var shape: SKShapeNode?
+    private var dotShape: SKShapeNode
+    private var color: CGColor
+    
+    //MARK: Public Varables
+    var showTraceDot: Bool = true
+    var traceDotRadius: Double = 5
+    var pointsArr = [CGPoint]()
+    
+    init(startLocation: CGPoint, color: CGColor) {
+        self.color = color
+        self.dotShape = SKShapeNode(circleOfRadius: CGFloat(self.traceDotRadius))
+        self.dotShape.position = startLocation
+    }
+    
+    func appendPointsArray(location: CGPoint) {
+        self.pointsArr.append(location)
+        setTraceDotLocation(location: location)
+        
+    }
+    
+    func setTraceDotLocation(location: CGPoint) {
+        self.dotShape.position = location
+    }
+    
+    func resetPointsArray() -> Void {
+        self.pointsArr = []
+    }
 }

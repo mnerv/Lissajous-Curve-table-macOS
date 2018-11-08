@@ -14,7 +14,7 @@ class GameScene: SKScene {
     //MARK: Global Variables
     var sceneSize = CGSize(width: 0, height: 0)
     var radius: Double = 0
-    var circles = [[Curve]]()
+    var circles = [[Rings]]()
     var traces = [[Curve]]()
     
     var columnCount: Int = 8
@@ -38,10 +38,10 @@ class GameScene: SKScene {
                 if rowCount == 0 {
                     rowCount = x
                 }
-                self.circles.append([Curve(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x))])
+                self.circles.append([Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x))])
             } else {
-                self.circles.append([Curve(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x)),
-                                     Curve(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: -Double(sceneSize.width/2) + radius, y: yPosition), color: yColor, multipler: Double(x))])
+                self.circles.append([Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x)),
+                                     Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: -Double(sceneSize.width/2) + radius, y: yPosition), color: yColor, multipler: Double(x))])
             }
         }
         
