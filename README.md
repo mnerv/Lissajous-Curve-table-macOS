@@ -1,8 +1,10 @@
-# Lissajous table macOS
+# Lissajous Curve table macOS
 Drawing Lissajous table in Swift using SpriteKit
 
 # Animation
 ![Lissajous table Gif Animation](https://thumbs.gfycat.com/AngelicDismalAmazonparrot-size_restricted.gif)
 
+[HD Version](https://gfycat.com/AngelicDismalAmazonparrot)
+
 # Inspiration 
-[Youtube Video to Coding Challenge #116: Lissajous Curve Table](https://youtu.be/--6eyLO78CY)
+[Youtube Video: Coding Challenge #116: Lissajous Curve Table](https://youtu.be/--6eyLO78CY)
