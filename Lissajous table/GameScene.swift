@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var sceneSize = CGSize(width: 0, height: 0)
     var radius: Double = 0
     var circles = [[Curve]]()
+    var traces = [[Curve]]()
     
     var columnCount: Int = 8
     var rowCount: Int = 0
@@ -30,8 +31,9 @@ class GameScene: SKScene {
         for x in 1...columnCount{
             let xPosition = Double(x)*radius*2+radius - Double(sceneSize.width/2)
             let yPosition = Double(sceneSize.height/2) - Double(x)*radius*2-radius
-            let xColor = CGColor.white
-            let yColor = CGColor.white
+            let xColor = CGColor(red: CGFloat(x)/CGFloat(columnCount), green: 0.5, blue: 1, alpha: 1)
+            let yColor = CGColor(red: 1, green: CGFloat(x)/CGFloat(columnCount), blue: 0.5, alpha: 1)
+            
             if(yPosition - radius < Double(-sceneSize.height/2)){
                 if rowCount == 0 {
                     rowCount = x
