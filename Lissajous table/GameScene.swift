@@ -28,6 +28,9 @@ class GameScene: SKScene {
         sceneSize = self.size
         radius = Double(sceneSize.width)/Double(columnCount+1)/2
         
+        var tempColumn = [Rings]()
+        var tempRow = [Rings]()
+
         for x in 1...columnCount{
             let xPosition = Double(x)*radius*2+radius - Double(sceneSize.width/2)
             let yPosition = Double(sceneSize.height/2) - Double(x)*radius*2-radius
@@ -36,54 +39,105 @@ class GameScene: SKScene {
             
             if(yPosition - radius < Double(-sceneSize.height/2)){
                 if rowCount == 0 {
-                    rowCount = x
+                    rowCount = x - 1
                 }
-                self.circles.append([Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x))])
+                tempColumn.append(Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x)))
+                
             } else {
-                self.circles.append([Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x)),
-                                     Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: -Double(sceneSize.width/2) + radius, y: yPosition), color: yColor, multipler: Double(x))])
+                tempColumn.append(Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: xPosition, y: Double(sceneSize.height/2) - radius), color: xColor, multipler: Double(x)))
+                
+                tempRow.append(Rings(radius: CGFloat(radius * circleRadiusRatio), locationOrigin: CGPoint(x: -Double(sceneSize.width/2) + radius, y: yPosition), color: yColor, multipler: Double(x)))
             }
         }
         
-        for cir in self.circles{
-            for shape in cir{
-                shape.createCircle()
-                self.addChild(shape.getShape())
-                self.addChild(shape.getDotShape())
+        self.circles.append(tempColumn)
+        self.circles.append(tempRow)
+        tempRow = []
+        tempColumn = []
+        
+        var temp = [Curve]()
+        for x in 0..<columnCount{
+            temp = []
+            for y in 0..<rowCount{
+                let mulitpliedColor = multiplyColor(colorA: self.circles[0][x].circleColor, colorB: self.circles[1][y].circleColor)
+
+                let location = CGPoint(x: self.circles[0][x].getDotLocation().x, y: self.circles[1][y].getDotLocation().y)
+                temp.append(Curve(startLocation: location, color: mulitpliedColor))
+            }
+            self.traces.append(temp)
+        }
+        
+        for element in self.traces{
+            for element1 in element{
+                self.addChild(element1.getDotShape())
+                self.addChild(element1.getShape())
             }
         }
         
+        for element in self.circles{
+            for element1 in element{
+                self.addChild(element1.getShape())
+                self.addChild(element1.getDotShape())
+
+            }
+        }
+
+    }
+    
+    func multiplyColor(colorA: CGColor, colorB: CGColor) -> CGColor{
+        let multipliedColor = CGColor(red: colorA.components![0] * colorB.components![0], green: colorA.components![1] * colorB.components![1], blue: colorA.components![2] * colorB.components![2], alpha: colorA.components![3] * colorB.components![3])
+        
+        return multipliedColor
     }
     
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
         case 49:
-            print("Hello World")
+            print(self.circles.count)
         default:
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
+        }
+    }
+    
+    func animateTraces(){
+        for x in 0..<columnCount{
+            for y in 0..<rowCount{
+                self.circles[0][x].advanceTraceDot(counter: counter)
+                self.circles[1][y].advanceTraceDot(counter: counter)
+                let location = CGPoint(x: self.circles[0][x].getDotLocation().x, y: self.circles[1][y].getDotLocation().y)
+                self.traces[x][y].appendPointsArray(location: location)
+            }
+            
         }
     }
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         for _ in 0..<1{
-            for cir in self.circles{
-                for shape in cir{
-                    shape.advanceTraceDot(counter: counter)
-                }
-            }
+            
             counter += 1
             if(counter > 360){
                 counter = 0
                 break
             }
         }
-        
+
         self.removeAllChildren()
+        animateTraces()
         for cir in self.circles{
             for shape in cir{
                 self.addChild(shape.getShape())
                 self.addChild(shape.getDotShape())
+            }
+        }
+        for element in self.traces{
+            for element1 in element{
+                if counter == 0 {
+                    element1.resetPointsArray()
+                }
+                
+                self.addChild(element1.getDotShape())
+                self.addChild(element1.getShape())
             }
         }
     }
