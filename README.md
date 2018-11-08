@@ -5,4 +5,4 @@ Drawing Lissajous table in Swift using SpriteKit
 ![Lissajous table Gif Animation](https://thumbs.gfycat.com/AngelicDismalAmazonparrot-size_restricted.gif)
 
 # Inspiration 
-[Youtube Video to Coding Challenge #116: Lissajous Curve Table](https://youtu.be/--6eyLO78CY)
+[Youtube Video: Coding Challenge #116: Lissajous Curve Table](https://youtu.be/--6eyLO78CY)
