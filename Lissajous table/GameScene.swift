@@ -17,7 +17,7 @@ class GameScene: SKScene {
     var circles = [[Rings]]()
     var traces = [[Curve]]()
     
-    var columnCount: Int = 8
+    var columnCount: Int = 6
     var rowCount: Int = 0
     var circleRadiusRatio = 0.82
     
@@ -113,17 +113,14 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        for _ in 0..<1{
-            
-            counter += 1
-            if(counter > 360){
-                counter = 0
-                break
-            }
+        
+        counter += 1
+        if(counter > 360){
+            counter = 0
         }
 
         self.removeAllChildren()
-        animateTraces()
+        self.animateTraces()
         for cir in self.circles{
             for shape in cir{
                 self.addChild(shape.getShape())
@@ -135,7 +132,6 @@ class GameScene: SKScene {
                 if counter == 0 {
                     element1.resetPointsArray()
                 }
-                
                 self.addChild(element1.getDotShape())
                 self.addChild(element1.getShape())
             }
