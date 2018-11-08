@@ -22,7 +22,7 @@ class Curve {
     //MARK: Public Varables
     var pointsArr = [CGPoint]()
     var showTraceDot: Bool = true
-    var traceDotRadius: Double = 4
+    var traceDotRadius: Double = 5
     
     init(radius: CGFloat, locationOrigin: CGPoint, color: CGColor, multipler: Double) {
         self.radius = radius
@@ -34,6 +34,7 @@ class Curve {
     func createCircle() {
         self.shape = SKShapeNode(circleOfRadius: self.radius)
         self.shape?.position = self.locationOrigin
+        self.shape?.strokeColor = NSColor(cgColor: self.circleColor)!
         createTraceDot(radius: traceDotRadius)
     }
     
@@ -50,7 +51,6 @@ class Curve {
     func createTraceDot(radius: Double) {
         if showTraceDot{
             self.dotShape = SKShapeNode(circleOfRadius: CGFloat(radius))
-    //        self.dotShape?.lineWidth = 3
             self.dotShape?.fillColor = NSColor.white
             self.dotShape?.position = CGPoint(x: self.locationOrigin.x, y: self.locationOrigin.y + self.radius)
         }
