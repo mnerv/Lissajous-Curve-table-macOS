@@ -3,60 +3,61 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@0,5x-16.png",
+      "filename" : "LissajousIcon-16.png",
       "scale" : "1x"
     },
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@1x-16.png",
+      "filename" : "LissajousIcon-32.png",
       "scale" : "2x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@0,5x-32.png",
+      "filename" : "LissajousIcon-32.png",
       "scale" : "1x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@1x-32.png",
+      "filename" : "LissajousIcon-64.png",
       "scale" : "2x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@0,5x-128.png",
+      "filename" : "LissajousIcon-128.png",
       "scale" : "1x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@1x-128.png",
+      "filename" : "LissajousIcon-256.png",
       "scale" : "2x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@0,5x-256.png",
+      "filename" : "LissajousIcon-256.png",
       "scale" : "1x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@1x-256.png",
+      "filename" : "LissajousIcon-512.png",
       "scale" : "2x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "LissajousIcon@1x-512.png",
+      "filename" : "LissajousIcon-512.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "LissajousIcon-1024.png",
       "scale" : "2x"
     }
   ],
