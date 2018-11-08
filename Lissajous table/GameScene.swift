@@ -74,8 +74,13 @@ class GameScene: SKScene {
             }
         }
         
-        for element in self.circles{
+        for (index, element) in self.circles.enumerated(){
             for element1 in element{
+//                if index == 0{
+//                    element1.createLine(location: element1.getDotLocation(), vertical: true, screenSize: self.sceneSize)
+//                } else {
+//                    element1.createLine(location: element1.getDotLocation(), vertical: false, screenSize: self.sceneSize)
+//                }
                 self.addChild(element1.getShape())
                 self.addChild(element1.getDotShape())
 
@@ -93,7 +98,8 @@ class GameScene: SKScene {
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
         case 49:
-            print(self.circles.count)
+            counter = 0
+            
         default:
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
         }
@@ -104,6 +110,7 @@ class GameScene: SKScene {
             for y in 0..<rowCount{
                 self.circles[0][x].advanceTraceDot(counter: counter)
                 self.circles[1][y].advanceTraceDot(counter: counter)
+                
                 let location = CGPoint(x: self.circles[0][x].getDotLocation().x, y: self.circles[1][y].getDotLocation().y)
                 self.traces[x][y].appendPointsArray(location: location)
             }
@@ -113,7 +120,6 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        
         counter += 1
         if(counter > 360){
             counter = 0
@@ -125,6 +131,7 @@ class GameScene: SKScene {
             for shape in cir{
                 self.addChild(shape.getShape())
                 self.addChild(shape.getDotShape())
+//                self.addChild(shape.getLineShape())
             }
         }
         for element in self.traces{

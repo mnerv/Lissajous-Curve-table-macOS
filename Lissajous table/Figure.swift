@@ -17,6 +17,8 @@ class Rings {
     private var shape: SKShapeNode?
     private var dotShape: SKShapeNode?
     private var dotLocation: CGPoint?
+    private var lineShape: SKShapeNode?
+    private var vertical: Bool = false
     
     //MARK: Public Varables
     var circleColor: CGColor
@@ -40,6 +42,30 @@ class Rings {
         createTraceDot(radius: traceDotRadius)
     }
     
+    func createLine(location: CGPoint, vertical: Bool, screenSize: CGSize) {
+        var pointArr = [CGPoint]()
+        self.vertical = vertical
+        
+        if(self.vertical){
+            pointArr.append(CGPoint(x: location.x, y: screenSize.height/2))
+            pointArr.append(CGPoint(x: location.x, y: -screenSize.height/2))
+        } else {
+            pointArr.append(CGPoint(x: -screenSize.width/2, y: location.y))
+            pointArr.append(CGPoint(x: screenSize.width/2, y: location.y))
+        }
+    
+        self.lineShape = SKShapeNode(points: &pointArr, count: pointArr.count)
+        self.lineShape?.strokeColor = NSColor.init(cgColor: circleColor)!
+    }
+    
+    func setLineLocation(location: CGPoint) {
+        if(self.vertical){
+            self.lineShape?.position.x = location.x
+        } else {
+            self.lineShape?.position.y = location.y
+        }
+    }
+    
     func setMultipliedColor(colorA: CGColor, colorB: CGColor) {
         self.multipliedColor = CGColor(red: colorA.components![0] * colorB.components![0], green: colorA.components![1] * colorB.components![1], blue: colorA.components![2] * colorB.components![2], alpha: colorA.components![3] * colorB.components![3])
     }
@@ -54,8 +80,9 @@ class Rings {
     
     func advanceTraceDot(counter: Int) {
         let radian = (Double(counter)*Double.pi*self.multipler)/180
-        self.dotShape?.position = CGPoint(x: Double(self.locationOrigin.x) + (Double(self.radius) * -sin(radian)),
-                                          y:  Double(self.locationOrigin.y) + (Double(self.radius) * cos(radian)))
+        let tempPoint = CGPoint(x: Double(self.locationOrigin.x) + (Double(self.radius) * -sin(radian)),
+                               y:  Double(self.locationOrigin.y) + (Double(self.radius) * cos(radian)))
+        self.dotShape?.position = tempPoint
     }
     
     func setTraceDotLocation(location: CGPoint) {
@@ -68,6 +95,10 @@ class Rings {
     
     func getDotShape() -> SKShapeNode {
         return self.dotShape!
+    }
+    
+    func getLineShape() -> SKShapeNode {
+        return self.lineShape!
     }
     
     func getDotLocation() -> CGPoint {
